@@ -9,26 +9,28 @@ require "pry"
 # * a     *
 # * frame *
 # *********
+# Get a sentence #
 
+puts "Please enter a sentence to print in a box: "
+sentence = gets.chomp.split(' ')
+@longest_word = sentence.max_by { |x| x.length }
 
-# Get a sentance #
-
-puts "Please enter a sentance to print in a box: "
-sentance = gets.chomp.split(' ')
-
-@longest_word = " "
-
-# find the longest word in array list
-sentance.each do |word|
-  if @longest_word.length < word.length
-    @longest_word = word
-  end
+def first_last_line
+  '*' * (@longest_word.length.to_i + 6)
 end
 
-# Print out the sentance in a box
-.................
+def box sentence
+  puts first_last_line
+  sentence.each do |word|
+    puts '*' + word.center(@longest_word.length.to_i + 4) + '*'
+  end
+  puts first_last_line
+end
 
-# first row length plus a 2 spaces on either side centered and two * on end.
-  (@longest_word.length) + 4)
-# loop through sentance to get the word and center with a space on either side of the word
+box(sentence)
+
+
+
+
+
 
